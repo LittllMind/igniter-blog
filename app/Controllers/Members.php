@@ -21,14 +21,14 @@ class Members extends Controller
         echo view('templates/footer', $data);
     }
 
-    public function memberView($id = null)
+    public function memberView($userId = null)
     {
         $model = new MembersModel();
 
-        $data['member'] = $model->getMembers($id);
+        $data['member'] = $model->getMembers($userId);
 
         if (empty($data['member'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the ' . $id);
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the ' . $userId);
         }
 
         $data['title'] = $data['member']['pseudo'];
@@ -42,7 +42,7 @@ class Members extends Controller
     {
         $model = new MembersModel();
 
-        if ($this->request->getMethod() == 'post' && $this->validate([
+        if ($this->request->getMethod() == 'post' && $this->valuserIdate([
             'pseudo' => 'required|min_length[3]|max_length[15]',
             'password' => 'required',
             'mail' => 'required'

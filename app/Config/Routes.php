@@ -35,7 +35,8 @@ $routes->setAutoRoute(true);
 $routes->match(['get', 'post'], 'member/create', 'Members::create');
 $routes->get('member/(:segment)', 'Members::MemberView/$1');
 $routes->get('member', 'Members::index');
-$routes->get('(:any)', 'Pages::view/$1');
+// $routes->get('(:any)', 'Pages::view/$1');
+$routes->get('', 'Home::index');
 
 /*
  * --------------------------------------------------------------------

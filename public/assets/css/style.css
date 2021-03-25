@@ -1,0 +1,12 @@
+body
+{
+    text-align: center;
+    align-items: center;
+}
+
+#mainContainer
+{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
