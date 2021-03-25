@@ -11,4 +11,9 @@ class Home extends BaseController
         echo view('/pages/index');
         echo view('/templates/footer');
     }
+
+    // public function signIn()
+    // {
+    //     echo $data
+    // }
 }
