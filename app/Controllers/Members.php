@@ -24,28 +24,23 @@ class Members extends Controller
 
     public function signIn()
     {
-        // $model = new MembersModel();
+        $model = new MembersModel();
 
         $request = service('request');
 
         $request->uri->getPath();
 
         $pseudo = $request->getPost('pseudo');
+        $password = $request->getPost('password');
 
-            print_r($pseudo);
-
-  
-
-
-
-        // $requestData = [
-        //     'pseudo' => $request->getPost('pseudo'),
-        //     'password' => $request->getPost('password')
-        // ];
-        // $data = [
-        //     'member' => $model->getMemberByPseudo($pseudo),
-        //     'title' => 'Connection Test'
-        // ];
+        print_r($pseudo);
+        print_r($password);
+        $data = [
+            'member' => $model->getMemberByPseudo($pseudo),
+            'title' => 'Connection Test'
+        ];
+        print_r($data);
+        print_r($data['member']['pseudo']);
         // if (empty($data['member'])) {
         //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the ');
         // }
