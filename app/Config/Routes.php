@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('members/(:segment)', 'MembersModel::memberView/$1');
 $routes->match(['get', 'post'], 'member/create', 'Members::create');
+$routes->match(['get', 'post'], 'member/signin', 'Members::signIn');
 $routes->get('member/(:segment)', 'Members::MemberView/$1');
 $routes->get('member', 'Members::index');
 // $routes->get('(:any)', 'Pages::view/$1');

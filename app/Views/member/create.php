@@ -2,7 +2,7 @@
 
 <?= \Config\Services::validation()->listErrors() ?>
 
-<form class="" action="/members/create" method="post">
+<form class="" action="/member/create" method="post">
     <?= csrf_field() ?>
 
     <label for="pseudo">Pseudo</label>
@@ -18,3 +18,7 @@
 
     <input type="submit" name="submit" value="Create new User">
 </form>
+
+
+<div class="">
+<?= \Config\Services::validation()->listErrors() ?>

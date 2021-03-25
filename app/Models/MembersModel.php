@@ -19,4 +19,10 @@ class MembersModel extends Model
                     ->where(['id' => $id])
                     ->first();
     }
+
+    public function getMemberByPseudo($pseudo)
+    {
+        return $this->where(['pseudo' => $pseudo])
+                    ->first();
+    }
 }
