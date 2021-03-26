@@ -47,9 +47,9 @@ class Members extends Controller
         //
         //
         //
-        //     echo view('templates/header', $data);
-        //     echo view('member/memberHome', $data);
-        //     echo view('templates/footer');
+            echo view('templates/header', $data);
+            echo view('member/memberHome', $data);
+            echo view('templates/footer');
     }
 
     public function memberView($userId = null)
@@ -73,18 +73,66 @@ class Members extends Controller
     {
         $model = new MembersModel();
 
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+          'pseudo' => [
+            'label' => 'pseudo',
+            'rules' => 'required|min_length[3]|max_length[15]',
+            'errors' => [
+                'required' => 'All accounts must have {field} provided',
+                'min_length' => 'Pseudo is too short',
+                'max_length' => 'Pseudo is too long'
+            ]
+          ],
+          'mail' => [
+            'label' => 'mail',
+            'rules' => 'required|valid_email',
+            'errors' => [
+              'required' => 'All accounts must have {field} provided',
+              'valid_email' => 'Please check the email field, It does not appear to be valid.'
+            ]
+          ],
+          'password' => [
+              'label' => 'password',
+              'rules' => 'required|min_length[6]',
+              'errors' => [
+                'required' => 'All accounts must have {field} provided',
+                'min_length' => 'Your password is too short. You want to get hacked ?'
+              ]
+            ],
+            'password' => [
+                'label' => 'pass_confirm',
+                'rules' => 'required|min_length[6]|matches[password]',
+                'errors' => [
+                  'required' => 'All accounts must have {field} provided',
+                  'min_length' => 'Your password is too short. You want to get hacked ?',
+                  'matches' => 'Passwords don\'t match'
+            ]
+          ]
+        ]);
+
+        // $data['newMember'] = [
+        //   'pseudo' => $this->request->getPost('pseudo'),
+        //   'mail' => $this->request->getPost('mail'),
+        //   'password' => $this->request->getPost('password'),
+        //   'pass_confirm' => $this->request->getPost('pass_confirm'),
+        // ];
+        //
+        // $validation->run($data, 'signUp');
+
         if ($this->request->getMethod() == 'post' && $this->validate([
             'pseudo' => 'required|min_length[3]|max_length[15]',
+            'mail' => 'required',
             'password' => 'required',
-            'mail' => 'required'
         ])) {
             $model->save([
                 'pseudo' => $this->request->getPost('pseudo'),
                 'password' => $this->request->getPost('password'),
                 'mail' => $this->request->getPost('mail')
             ]);
-
+            echo view('templates/header', ['title' => 'Create a new Member']);
             echo view('member/success');
+            echo view('templates/footer');
         } else {
             echo view('templates/header', ['title' => 'Create a new Member']);
             echo view('member/create');

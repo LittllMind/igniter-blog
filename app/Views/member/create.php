@@ -1,24 +1,52 @@
-<h2><?= esc($title) ?></h2>
 
-<?= \Config\Services::validation()->listErrors() ?>
 
-<form class="" action="/member/create" method="post">
+
+
+<form class="" action="/member/create" method="post" id="login">
+    <?= \Config\Services::validation()->listErrors() ?>
     <?= csrf_field() ?>
 
-    <label for="pseudo">Pseudo</label>
-    <input type="text" name="pseudo" placeholder="pseudo">
+    <div class="form-group">
+          <label  for="pseudo">Pseudo</label>
+          <input  type="text" class="form-control" id="pseudo" name="pseudo"
+                  placeholder="Enter Pseudo"
+                  required="true">
+    </div>
 
+    <div class="form-group">
+      <label  for="mail">Email address</label>
+      <input  type="email"
+              class="form-control"
+              name="mail"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              required="true">
+      <small id="emailHelp" class="form-text text-muted">
+            We'll never share your email with anyone else.
+      </small>
+    </div>
 
-    <label for="mail">Pseudo</label>
-    <input type="mail" name="mail" placeholder="e-mail">
+    <div class="form-group">
+        <label  for="password">Password</label>
+        <input  type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required="true">
+      </div>
 
+      <div class="form-group">
+        <label for="pass_confirm">Confirm password</label>
+        <input  type="password"
+                class="form-control"
+                id="pass_confirm"
+                name="pass_confirm"
+                placeholder="Confirm password"
+                required="true">
+      </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="password">
+      <button type="submit" name="submit" class="btn btn-primary">Inscription</button>
 
-    <input type="submit" name="submit" value="Create new User">
+    <!-- <input type="submit" name="submit" value="Create new User"> -->
 </form>
-
-
-<div class="">
-<?= \Config\Services::validation()->listErrors() ?>
