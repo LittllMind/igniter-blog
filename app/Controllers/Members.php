@@ -69,73 +69,90 @@ class Members extends Controller
         echo view('templates/footer', $data);
     }
 
+
+
     public function create()
     {
-        $model = new MembersModel();
-
         $validation = \Config\Services::validation();
-        $validation->setRules([
-          'pseudo' => [
-            'label' => 'pseudo',
-            'rules' => 'required|min_length[3]|max_length[15]',
-            'errors' => [
-                'required' => 'All accounts must have {field} provided',
-                'min_length' => 'Pseudo is too short',
-                'max_length' => 'Pseudo is too long'
-            ]
-          ],
-          'mail' => [
-            'label' => 'mail',
-            'rules' => 'required|valid_email',
-            'errors' => [
-              'required' => 'All accounts must have {field} provided',
-              'valid_email' => 'Please check the email field, It does not appear to be valid.'
-            ]
-          ],
-          'password' => [
-              'label' => 'password',
-              'rules' => 'required|min_length[6]',
-              'errors' => [
-                'required' => 'All accounts must have {field} provided',
-                'min_length' => 'Your password is too short. You want to get hacked ?'
-              ]
-            ],
-            'password' => [
-                'label' => 'pass_confirm',
-                'rules' => 'required|min_length[6]|matches[password]',
-                'errors' => [
-                  'required' => 'All accounts must have {field} provided',
-                  'min_length' => 'Your password is too short. You want to get hacked ?',
-                  'matches' => 'Passwords don\'t match'
-            ]
-          ]
-        ]);
+        helper(['form', 'url']);
 
-        // $data['newMember'] = [
-        //   'pseudo' => $this->request->getPost('pseudo'),
-        //   'mail' => $this->request->getPost('mail'),
-        //   'password' => $this->request->getPost('password'),
-        //   'pass_confirm' => $this->request->getPost('pass_confirm'),
-        // ];
-        //
-        // $validation->run($data, 'signUp');
 
-        if ($this->request->getMethod() == 'post' && $this->validate([
-            'pseudo' => 'required|min_length[3]|max_length[15]',
-            'mail' => 'required',
-            'password' => 'required',
-        ])) {
+        $data = [
+            'pseudo' => $this->request->getPost('pseudo'),
+            'mail' => $this->request->getPost('mail'),
+            'password' => $this->request->getPost('password'),
+            'pass_confirm' => $this->request->getPost('pass_confirm'),
+        ];
+
+
+        $validation->run($data, 'signUp');
+
+        if (empty($data['pseudo'])) {
+            if (!$this->validate([])) {
+                echo view('templates/header', ['title' => 'create account']);
+                echo view('member/create', ['validation' => $this->validator]);
+                echo view('templates/footer');
+            }
+        } else {
+            $model = new MembersModel();
             $model->save([
-                'pseudo' => $this->request->getPost('pseudo'),
-                'password' => $this->request->getPost('password'),
-                'mail' => $this->request->getPost('mail')
+              'pseudo' => $this->request->getPost('pseudo'),
+              'password' => $this->request->getPost('password'),
+              'mail' => $this->request->getPost('mail')
             ]);
-            echo view('templates/header', ['title' => 'Create a new Member']);
+            echo view('templates/header', ['title' => 'Account succesfully created']);
             echo view('member/success');
             echo view('templates/footer');
+        }
+
+        // if (!$this->validate([])) {
+        //     echo view('templates/header', ['title' => 'create account']);
+        //     echo view('member/create', ['validation' => $this->validator]);
+        //     echo view('templates/footer');
+        // } else {
+        //     // $model = new MembersModel();
+        //     // $model->save([
+        //     //   'pseudo' => $this->request->getPost('pseudo'),
+        //     //   'password' => $this->request->getPost('password'),
+        //     //   'mail' => $this->request->getPost('mail')
+        //     // ]);
+        //       echo view('templates/header', ['title' => 'Account succesfully created']);
+        //       echo view('member/success');
+        //       echo view('templates/footer');
+        // }
+    }
+
+    public function create1()
+    {
+        $validation = \Config\Services::validation();
+        helper(['form', 'url']);
+
+
+        $data = [
+            'pseudo' => $this->request->getPost('pseudo'),
+            'mail' => $this->request->getPost('mail'),
+            'password' => $this->request->getPost('password'),
+            'pass_confirm' => $this->request->getPost('pass_confirm'),
+        ];
+
+        $validation->run($data, 'signUp');
+
+        if (empty($this->validate([]))) {
+
+                $model = new MembersModel();
+
+                $model->save([
+                  'pseudo' => $this->request->getPost('pseudo'),
+                  'password' => $this->request->getPost('password'),
+                  'mail' => $this->request->getPost('mail')
+                ]);
+                echo view('templates/header', ['title' => 'Account succesfully created']);
+                echo view('member/success');
+                echo view('templates/footer');
+
         } else {
-            echo view('templates/header', ['title' => 'Create a new Member']);
-            echo view('member/create');
+            echo view('templates/header', ['title' => 'create account']);
+            echo view('member/create', ['validation' => $this->validator]);
             echo view('templates/footer');
         }
     }

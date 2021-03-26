@@ -3,20 +3,25 @@
 
 
 <form class="" action="/member/create" method="post" id="login">
-    <?= \Config\Services::validation()->listErrors() ?>
+    <?= $validation->listErrors() ?>
+    <?= form_open('form'); ?>
     <?= csrf_field() ?>
 
     <div class="form-group">
-          <label  for="pseudo">Pseudo</label>
-          <input  type="text" class="form-control" id="pseudo" name="pseudo"
-                  placeholder="Enter Pseudo"
-                  required="true">
+      <label  for="pseudo">Pseudo</label>
+      <input  type="text"
+              class="form-control"
+              id="pseudo"
+              name="pseudo"
+              placeholder="Enter Pseudo"
+              required="true">
     </div>
 
     <div class="form-group">
       <label  for="mail">Email address</label>
       <input  type="email"
               class="form-control"
+              id="mail"
               name="mail"
               aria-describedby="emailHelp"
               placeholder="Enter email"

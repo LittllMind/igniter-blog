@@ -41,9 +41,39 @@ class Validation
   // Rules
   //--------------------------------------------------------------------
     public $signUp = [
-      'pseudo' => 'required|min_length[3]|max_length[15]',
-      'mail' => 'required',
-      'password' => 'required|min_length[6]',
-      'pass_confirm' => 'required|min_length[6]'
+      'pseudo' => [
+        'label' => 'pseudo',
+        'rules' => 'required|min_length[3]|max_length[15]',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided',
+          'min_length' => 'Pseudo is too short',
+          'max_length' => 'Pseudo is too long'
+        ]
+      ],
+      'mail' => [
+        'label' => 'mail',
+        'rules' => 'required|valid_email',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided',
+          'valid_email' => 'Please check the email field, It does not appear to be valid.'
+        ]
+      ],
+      'password' => [
+        'label' => 'password',
+        'rules' => 'required|min_length[6]',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided',
+          'min_length' => 'Your password is too short. You want to get hacked ?'
+        ]
+      ],
+      'pass_confirm' => [
+        'label' => 'pass_confirm',
+        'rules' => 'required|min_length[6]|matches[password]',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided',
+          'min_length' => 'Your password confirm is too short. You want to get hacked ?',
+          'matches' => 'Passwords don\'t match'
+        ]
+      ]
     ];
 }
