@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class MembersModel extends Model
 {
     protected $table = 'membre';
-
+    protected $primaryKey = 'id';
     protected $allowedFields = ['pseudo', 'password', 'mail', 'registration_date'];
 
     public function getMembers($id = false)
@@ -23,6 +23,12 @@ class MembersModel extends Model
     public function getMemberByPseudo($pseudo)
     {
         return $this->where(['pseudo' => $pseudo])
+                    ->first();
+    }
+
+    public function getMemberByMail($mail)
+    {
+        return $this->where(['mail' => $mail])
                     ->first();
     }
 }

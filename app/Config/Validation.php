@@ -43,19 +43,21 @@ class Validation
     public $signUp = [
       'pseudo' => [
         'label' => 'pseudo',
-        'rules' => 'required|min_length[3]|max_length[15]',
+        'rules' => 'required|min_length[3]|max_length[15]|is_unique[membre.pseudo]',
         'errors' => [
           'required' => 'All accounts must have {field} provided',
           'min_length' => 'Pseudo is too short',
-          'max_length' => 'Pseudo is too long'
+          'max_length' => 'Pseudo is too long',
+          'is_unique' => 'User {field} is already taken.'
         ]
       ],
       'mail' => [
         'label' => 'mail',
-        'rules' => 'required|valid_email',
+        'rules' => 'required|valid_email|is_unique[membre.mail]',
         'errors' => [
           'required' => 'All accounts must have {field} provided',
-          'valid_email' => 'Please check the email field, It does not appear to be valid.'
+          'valid_email' => 'Please check the email field, It does not appear to be valid.',
+          'is_unique' => 'User {field} is already taken.'
         ]
       ],
       'password' => [

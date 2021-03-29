@@ -1,10 +1,9 @@
 
 
 
+<?php $validation = \Config\Services::validation(); ?>
 
-<form class="" action="/member/create" method="post" id="login">
-    <?= $validation->listErrors() ?>
-    <?= form_open('form'); ?>
+<form class="" action="<?php echo base_url('/submit-form') ?>" method="post" id="login">
     <?= csrf_field() ?>
 
     <div class="form-group">
@@ -15,6 +14,12 @@
               name="pseudo"
               placeholder="Enter Pseudo"
               required="true">
+      <!-- Error -->
+      <?php if ($validation->getError('pseudo')) {?>
+          <div class="alert alert-danger mt-2">
+              <?= $error = $validation->getError('pseudo'); ?>
+          </div>
+      <?php }?>
     </div>
 
     <div class="form-group">
@@ -29,6 +34,12 @@
       <small id="emailHelp" class="form-text text-muted">
             We'll never share your email with anyone else.
       </small>
+      <!-- Error -->
+      <?php if ($validation->getError('mail')) {?>
+          <div class="alert alert-danger mt-2">
+              <?= $error = $validation->getError('mail'); ?>
+          </div>
+      <?php }?>
     </div>
 
     <div class="form-group">
@@ -39,6 +50,12 @@
                 name="password"
                 placeholder="Password"
                 required="true">
+      <!-- Error -->
+      <?php if ($validation->getError('password')) {?>
+          <div class="alert alert-danger mt-2">
+              <?= $error = $validation->getError('password'); ?>
+          </div>
+      <?php }?>
       </div>
 
       <div class="form-group">
@@ -50,8 +67,13 @@
                 placeholder="Confirm password"
                 required="true">
       </div>
+      <!-- Error -->
+      <?php if ($validation->getError('pass_confirm')) {?>
+          <div class="alert alert-danger mt-2">
+              <?= $error = $validation->getError('pass_confirm'); ?>
+          </div>
+      <?php }?>
 
-      <button type="submit" name="submit" class="btn btn-primary">Inscription</button>
+      <button type="submit" name="submit" class="btn btn-primary btn-block">Inscription</button>
 
-    <!-- <input type="submit" name="submit" value="Create new User"> -->
 </form>
