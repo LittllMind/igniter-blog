@@ -77,23 +77,43 @@ class Members extends Controller
 
     public function signIn()
     {
+        helper(['form', 'url']);
+        $validation = \Config\Services::validation();
+
+        
         $model = new MembersModel();
 
         $request = service('request');
 
         $request->uri->getPath();
 
-        $pseudo = $request->getPost('pseudo');
-        $password = $request->getPost('password');
+        $pseudo = htmlspecialchars($request->getPost('pseudo'));
+        $password = htmlspecialchars($request->getPost('password'));
 
-        print_r($pseudo);
-        print_r($password);
         $data = [
             'member' => $model->getMemberByPseudo($pseudo),
             'title' => 'Connection Test'
         ];
-        print_r($data);
-        print_r($data['member']['pseudo']);
+
+        $isPasswordCorrect = password_verify($password, $data['member']['password']);
+
+        print_r($isPasswordCorrect);
+        // print_r($pseudo);
+        // echo "<br> ------------ <br>";
+        // print_r($password);
+        // echo "<br> ------------ <br>";
+        //
+
+        // print_r($data);
+        // echo "<br> ------------ <br>";
+        //
+        // print_r($data['member']['pseudo']);
+        // echo "<br> ------------ <br>";
+        // print_r($data['member']['password']);
+        // echo "<br> ------------ <br>";
+
+
+
         // if (empty($data['member'])) {
         //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the ');
         // }

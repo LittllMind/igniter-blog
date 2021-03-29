@@ -35,7 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('contact-form', 'Members::create');
 $routes->post('submit-form', 'Members::createMemberValidation');
 $routes->match(['get', 'post'], 'member/create', 'Members::indexCreate');
-$routes->match(['get', 'post'], 'member/signin', 'Members::signIn');
+$routes->match(['get', 'post'], 'signin', 'Members::signIn');
 $routes->get('member/(:segment)', 'Members::MemberView/$1');
 $routes->get('member', 'Members::index');
 // $routes->get('(:any)', 'Pages::view/$1');

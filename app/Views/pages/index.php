@@ -1,15 +1,22 @@
 
 <div class="">
-<?= \Config\Services::validation()->listErrors() ?>
-  <form action="/member/signin" method="post" id="login">
+<?= \Config\Services::validation(); ?>
+  <form action="/signin" method="post" id="login">
     <?= csrf_field() ?>
+
     <div class="form-group">
-      <label for="pseudo">Pseudo</label>
-      <input  type="text"
-              name="pseudo"
+      <label for="mail">Pseudo</label>
+      <input  type="email"
+              name="mail"
               class="form-control"
-              placeholder="Pseudo"
+              placeholder="E-mail"
               required="true">
+        <!-- Error -->
+        <?php if ($validation->getError('mail')) {?>
+            <div class="alert alert-danger mt-2">
+                <?= $error = $validation->getError('mail'); ?>
+            </div>
+        <?php }?>
     </div>
 
     <div class="form-group">
@@ -19,6 +26,12 @@
               class="form-control"
               placeholder="Password"
               required="true">
+              <!-- Error -->
+      <?php if ($validation->getError('password')) {?>
+          <div class="alert alert-danger mt-2">
+            <?= $error = $validation->getError('password'); ?>
+          </div>
+      <?php }?>
     </div>
     <input type="submit" name="submit" value="Sign in">
     <!-- <button type="submit" name="submit" class="btn btn-primary">Sign in</button> -->

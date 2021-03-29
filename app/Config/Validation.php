@@ -78,4 +78,22 @@ class Validation
         ]
       ]
     ];
+
+    public $signIn = [
+      'mail' => [
+        'label' => 'mail',
+        'rules' => 'required|valid_email',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided',
+          'valid_email' => 'Please check the email field, It does not appear to be valid.'
+        ]
+      ],
+      'password' => [
+        'label' => 'password',
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'All accounts must have {field} provided'
+        ]
+      ],
+    ];
 }
