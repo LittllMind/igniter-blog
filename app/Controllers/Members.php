@@ -43,12 +43,12 @@ class Members extends Controller
 
 
         $pseudo = $this->request->getVar('pseudo');
-        $check_pseudo = $memberModel->getMemberByPseudo($pseudo);
-        print_r($check_pseudo);
+        $checkPseudo = $memberModel->getMemberByPseudo($pseudo);
+        print_r($checkPseudo);
 
         $mail = $this->request->getVar('mail');
-        $check_mail = $memberModel->getMemberByMail($mail);
-        print_r($check_mail);
+        $checkMail = $memberModel->getMemberByMail($mail);
+        print_r($checkMail);
 
         if (!$input) {
             echo view('templates/header', ['title' => 'create account']);
@@ -56,18 +56,18 @@ class Members extends Controller
                 'validation' => $this->validator
             ]);
             echo view('templates/footer');
-        } elseif (!empty($check_pseudo)) {
+        } elseif (!empty($checkPseudo)) {
             echo view('templates/header', ['title' => 'create account']);
             echo view('member/create', [
                 'validation' => $this->validator
             ]);
             echo view('templates/footer');
         } else {
-            $password_hash = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+            $passwordHash = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
             $memberModel->save([
                 'pseudo' => $this->request->getVar('pseudo'),
                 'mail' => $this->request->getVar('mail'),
-                'password' => $password_hash
+                'password' => $passwordHash
               ]);
               echo view('templates/header', ['title' => 'Account succesfully created !']);
               echo view('member/success');
@@ -149,11 +149,11 @@ class Members extends Controller
     //     } else {
     //         $model = new MembersModel();
     //
-    //         $password_hash = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+    //         $passwordHash = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
     //
     //         $model->save([
     //           'pseudo' => $this->request->getPost('pseudo'),
-    //           'password' => $password_hash,
+    //           'password' => $passwordHash,
     //           'mail' => $this->request->getPost('mail')
     //         ]);
     //         echo view('templates/header', ['title' => 'Account succesfully created']);
