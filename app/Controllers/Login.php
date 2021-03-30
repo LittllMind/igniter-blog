@@ -34,6 +34,7 @@ class Login extends Controller
                     'logged_in' => true,
                 ];
                 $session->set($sessionData);
+
                 return redirect()->to('/dashboard');
             } else {
                 $session->setFlashData('msg', 'Wrong Password');
@@ -42,16 +43,6 @@ class Login extends Controller
         } else {
             $session->setFlashData('msg', 'Email not found');
             return redirect()->to('/');
-            // print_r('var mail' . $this->request->getVar('email'));
-            // echo '<br>-------------------------------<br>';
-            // print_r('var password' . $this->request->getVar('password'));
-            // echo '<br>-------------------------------<br>';
-            // print_r('mail' . $mail);
-            // echo '<br>-------------------------------<br>';
-            // print_r('password' . $password);
-            // echo '<br>-------------------------------<br>';
-            // print_r('data' . $data);
-
         }
     }
 
@@ -59,6 +50,6 @@ class Login extends Controller
     {
           $session = session();
           $session->destroy();
-          return redirect()->to('/index');
+          return redirect()->to('/');
     }
 }

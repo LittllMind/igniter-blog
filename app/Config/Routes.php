@@ -31,7 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// $routes->get('members/(:segment)', 'MembersModel::memberView/$1');
+$routes->get('/logout', 'Login::logout');
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('contact-form', 'Members::create');
@@ -40,7 +40,6 @@ $routes->match(['get', 'post'], 'member/create', 'Members::indexCreate');
 $routes->match(['get', 'post'], 'member/signin', 'Members::signIn');
 $routes->get('member/(:segment)', 'Members::MemberView/$1');
 $routes->get('member', 'Members::index');
-// $routes->get('(:any)', 'Pages::view/$1');
 $routes->get('', 'Home::index');
 
 /*
