@@ -1,14 +1,14 @@
 <?php
 // Récuperation des variables passées, on donne soit année; mois; année+mois
-if (!isset($_GET['mois'])) {
+if (!isset($mois)) {
     $num_mois = date("n");
 } else {
-    $num_mois = $_GET['mois'];
+    $num_mois = $mois;
 }
-if (!isset($_GET['annee'])) {
+if (!isset($annee)) {
     $num_an = date("Y");
 } else {
-    $num_an = $_GET['annee'];
+    $num_an = $annee;
 }
 
 // pour pas s'embeter a les calculer a l'affchage des fleches de navigation...
@@ -65,17 +65,19 @@ for ($i=0; $i<6; $i++) {
 <table>
     <tr>
       <td colspan="7" align="center">
-        <a href="calendrier.php?mois=<?php echo $num_mois-1; ?>&amp;annee=<?php echo $num_an; ?>">
+
+
+        <a href="/calendar/<?= esc($num_mois-1, 'url')?>/<?= esc($num_an, 'url')?>">
           <<</a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;
-          <a href="calendrier.php?mois=<?php echo $num_mois+1; ?>&amp;annee=<?php echo $num_an; ?>">>>
+          <a href="/calendar/<?= esc($num_mois+1, 'url')?>/<?= esc($num_an, 'url')?>">>>
           </a>
         </td>
       </tr>
       <tr>
         <td colspan="7" align="center">
-          <a href="calendrier.php?mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an-1; ?>">
+          <a href="/calendar/<?= esc($num_mois, 'url')?>/<?= esc($num_an-1, 'url')?>">
             <<</a>&nbsp;&nbsp;<?php echo $num_an;  ?>&nbsp;&nbsp;
-            <a href="calendrier.php?mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an+1; ?>">>>
+            <a href="/calendar/<?= esc($num_mois, 'url')?>/<?= esc($num_an+1, 'url')?>">>>
             </a>
           </td>
         </tr>
