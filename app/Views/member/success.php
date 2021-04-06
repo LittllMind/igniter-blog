@@ -1,4 +1,8 @@
 
-<h3>Your form was successfully submitted!</h3>
+<div class="success">
 
-    <p><?= anchor('form', 'Try it again!') ?></p>
+  <h3>Your form was successfully submitted!</h3>
+
+      <p> <a href="/">Login</a> </p>
+
+</div>

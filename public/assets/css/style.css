@@ -10,3 +10,13 @@ body
     display: flex;
     flex-direction: column;
 }
+
+.memberView
+{
+    flex-direction: column;
+}
+
+.success
+{
+    flex-direction: column;
+}

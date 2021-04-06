@@ -10,6 +10,20 @@ use CodeIgniter\HTTP\IncomingRequest;
 class Members extends Controller
 {
 
+    public function index()
+    {
+        $model = new MembersModel();
+
+        $data = [
+          'members' => $model->getMembers(),
+          'title' => 'Member list',
+        ];
+
+        echo view('templates/header', $data);
+        echo view('member/membersOverview', $data);
+        echo view('templates/footer');
+    }
+
     public function create()
     {
         echo view('templates/header', ['title' => 'create account']);
@@ -119,97 +133,6 @@ class Members extends Controller
 
         echo view('templates/header', $data);
         echo view('member/memberView', $data);
-        echo view('templates/footer', $data);
+        echo view('templates/footer');
     }
-
-
-
-    // public function create2()
-    // {
-    //     $validation = \Config\Services::validation();
-    //     helper(['form', 'url']);
-    //
-    //
-    //     $data = [
-    //         'pseudo' => $this->request->getPost('pseudo'),
-    //         'mail' => $this->request->getPost('mail'),
-    //         'password' => $this->request->getPost('password'),
-    //         'pass_confirm' => $this->request->getPost('pass_confirm'),
-    //     ];
-    //
-    //
-    //     $validation->run($data, 'signUp');
-    //
-    //     if (empty($data['pseudo'])) {
-    //         if (!$this->validate([])) {
-    //             echo view('templates/header', ['title' => 'create account']);
-    //             echo view('member/create', ['validation' => $this->validator]);
-    //             echo view('templates/footer');
-    //         }
-    //     } else {
-    //         $model = new MembersModel();
-    //
-    //         $passwordHash = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
-    //
-    //         $model->save([
-    //           'pseudo' => $this->request->getPost('pseudo'),
-    //           'password' => $passwordHash,
-    //           'mail' => $this->request->getPost('mail')
-    //         ]);
-    //         echo view('templates/header', ['title' => 'Account succesfully created']);
-    //         echo view('member/success');
-    //         echo view('templates/footer');
-    //     }
-    //
-    //     // if (!$this->validate([])) {
-    //     //     echo view('templates/header', ['title' => 'create account']);
-    //     //     echo view('member/create', ['validation' => $this->validator]);
-    //     //     echo view('templates/footer');
-    //     // } else {
-    //     //     // $model = new MembersModel();
-    //     //     // $model->save([
-    //     //     //   'pseudo' => $this->request->getPost('pseudo'),
-    //     //     //   'password' => $this->request->getPost('password'),
-    //     //     //   'mail' => $this->request->getPost('mail')
-    //     //     // ]);
-    //     //       echo view('templates/header', ['title' => 'Account succesfully created']);
-    //     //       echo view('member/success');
-    //     //       echo view('templates/footer');
-    //     // }
-    // }
-    //
-    // public function create1()
-    // {
-    //     $validation = \Config\Services::validation();
-    //     helper(['form', 'url']);
-    //
-    //
-    //     $data = [
-    //         'pseudo' => $this->request->getPost('pseudo'),
-    //         'mail' => $this->request->getPost('mail'),
-    //         'password' => $this->request->getPost('password'),
-    //         'pass_confirm' => $this->request->getPost('pass_confirm'),
-    //     ];
-    //
-    //     $validation->run($data, 'signUp');
-    //
-    //     if (empty($this->validate([]))) {
-    //
-    //             $model = new MembersModel();
-    //
-    //             $model->save([
-    //               'pseudo' => $this->request->getPost('pseudo'),
-    //               'password' => $this->request->getPost('password'),
-    //               'mail' => $this->request->getPost('mail')
-    //             ]);
-    //             echo view('templates/header', ['title' => 'Account succesfully created']);
-    //             echo view('member/success');
-    //             echo view('templates/footer');
-    //
-    //     } else {
-    //         echo view('templates/header', ['title' => 'create account']);
-    //         echo view('member/create', ['validation' => $this->validator]);
-    //         echo view('templates/footer');
-    //     }
-    // }
 }
