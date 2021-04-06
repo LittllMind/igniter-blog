@@ -1,3 +1,10 @@
+/* SCSS RGB */
+/* $lapis-lazuli: rgba(51, 102, 153, 1);
+$dark-sky-blue: rgba(134, 187, 216, 1);
+$charcoal: rgba(47, 72, 88, 1);
+$granny-smith-apple: rgba(158, 228, 147, 1);
+$nyanza: rgba(218, 247, 220, 1); */
+
 body
 {
     text-align: center;
@@ -19,4 +26,37 @@ body
 .success
 {
     flex-direction: column;
+}
+
+.calendar_main
+{
+    position: absolute;
+    top: 10%;
+    width: 500px;
+    height: 500px;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    border-radius: 30px 30px 30px 30px;
+}
+
+.calendar_week
+{
+    background-color: #86BBD8;
+    text-align: center;
+}
+
+.calendar_days_rows
+{
+    background-color: #DAF7DC;
+    text-align: center;
+}
+
+.calendar_days_rows td
+{
+    text-align: center;
+}
+
+#active_day
+{
+    border-radius: 30px 30px 30px 30px;
+    background-color: #9EE493;
 }

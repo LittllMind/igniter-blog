@@ -1,14 +1,14 @@
 <?php
 // Récuperation des variables passées, on donne soit année; mois; année+mois
-if (!isset($_GET['mois'])) {
+if (!isset($mois)) {
     $num_mois = date("n");
 } else {
-    $num_mois = $_GET['mois'];
+    $num_mois = $mois;
 }
-if (!isset($_GET['annee'])) {
+if (!isset($annee)) {
     $num_an = date("Y");
 } else {
-    $num_an = $_GET['annee'];
+    $num_an = $annee;
 }
 
 // pour pas s'embeter a les calculer a l'affchage des fleches de navigation...
@@ -59,43 +59,57 @@ for ($i=0; $i<6; $i++) {
 ?>
 
 <html>
-<head><title>Calendrier</title>
+<head>
+  <title>Calendrier</title>
+  <link rel="stylesheet"
+        href="<?php echo base_url('assets/css/bootstrap.min.css') ?>"
+        type="text/css" />
+  <link rel="stylesheet"
+        href="<?php echo base_url('assets/css/style.css') ?>"
+        type="text/css"/>
 </head>
 <body>
-<table>
-    <tr>
-      <td colspan="7" align="center">
-        <a href="calendrier.php?mois=<?php echo $num_mois-1; ?>&amp;annee=<?php echo $num_an; ?>">
-          <<</a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;
-          <a href="calendrier.php?mois=<?php echo $num_mois+1; ?>&amp;annee=<?php echo $num_an; ?>">>>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="7" align="center">
-          <a href="calendrier.php?mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an-1; ?>">
-            <<</a>&nbsp;&nbsp;<?php echo $num_an;  ?>&nbsp;&nbsp;
-            <a href="calendrier.php?mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an+1; ?>">>>
-            </a>
-          </td>
-        </tr>
-  <?php
-    echo'<tr>';
-    for ($i = 1; $i <= 7; $i++) {
-        echo ('<td>'.$tab_jours[$i].'</td>');
-    }
-    echo'</tr>';
 
-    for ($i=0; $i<6; $i++) {
-        echo "<tr>";
-        for ($j=0; $j<7; $j++) {
-            echo "<td".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))
-            ?' style="color: #FFFFFF; background-color: #000000;"':null).">".((strpos($tab_cal[$i][$j], "*") !== false)
-            ?'<font color="#aaaaaa">'.str_replace("*", "", $tab_cal[$i][$j]).'</font>':$tab_cal[$i][$j])."</td>";
+  <div class="container" id=mainContainer>
+    <div class="row justify-content-md-center">
+      <table class="calendar_main">
+          <tr>
+            <td colspan="7" align="center">
+
+
+              <a href="/calendar/<?= esc($num_mois-1, 'url')?>/<?= esc($num_an, 'url')?>">
+                <<</a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;
+                <a href="/calendar/<?= esc($num_mois+1, 'url')?>/<?= esc($num_an, 'url')?>">>>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="7" align="center">
+                <a href="/calendar/<?= esc($num_mois, 'url')?>/<?= esc($num_an-1, 'url')?>">
+                  <<</a>&nbsp;&nbsp;<?php echo $num_an;  ?>&nbsp;&nbsp;
+                  <a href="/calendar/<?= esc($num_mois, 'url')?>/<?= esc($num_an+1, 'url')?>">>>
+                  </a>
+                </td>
+              </tr>
+        <?php
+          echo'<tr class="calendar_week">';
+        for ($i = 1; $i <= 7; $i++) {
+              echo ('<td>'.$tab_jours[$i].'</td>');
         }
-        echo "</tr>";
-    }
-    ?>
-</table>
+          echo'</tr>';
+
+        for ($i=0; $i<6; $i++) {
+              echo '<tr class="calendar_days_rows">';
+            for ($j=0; $j<7; $j++) {
+                  echo "<td".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))
+                  ?' id="active_day"':null).">".((strpos($tab_cal[$i][$j], "*") !== false)
+                  ?'<font color="#aaaaaa">'.str_replace("*", "", $tab_cal[$i][$j]).'</font>':$tab_cal[$i][$j])."</td>";
+            }
+              echo "</tr>";
+        }
+        ?>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

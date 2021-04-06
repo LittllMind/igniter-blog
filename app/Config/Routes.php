@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('calendar', 'Calendar::index');
+$routes->get('calendar/(:segment)/(:segment)', 'Calendar::changeMonth/$1/$2');
 $routes->get('/logout', 'Login::logout');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('contact-form', 'Members::create');
