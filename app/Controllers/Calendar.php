@@ -13,18 +13,26 @@ class Calendar extends Controller
         $data = [
           'mois' => $num_mois,
           'annee' => $num_an,
+          'title' => ''
         ];
 
+        echo view('templates/header', $data);
         echo view('pages/calendar', $data);
+        echo view('templates/footer');
     }
 
     public function changeMonth($num_mois, $num_an)
     {
+
+        $tab_mois = array("","Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre");
         $data = [
           'mois' => $num_mois,
           'annee' => $num_an,
+          'title' => $tab_mois[$num_mois],
         ];
 
+        echo view('templates/header', $data);
         echo view('pages/calendar', $data);
+        echo view('templates/footer');
     }
 }

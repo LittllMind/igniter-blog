@@ -3,6 +3,6 @@
 
   <h3>Your form was successfully submitted!</h3>
 
-      <p> <a href="/">Login</a> </p>
+      <p> <a href="/login">Login</a> </p>
 
 </div>

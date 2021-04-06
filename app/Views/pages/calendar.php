@@ -58,7 +58,7 @@ for ($i=0; $i<6; $i++) {
 }
 ?>
 
-<html>
+<!-- <html>
 <head>
   <title>Calendrier</title>
   <link rel="stylesheet"
@@ -71,7 +71,7 @@ for ($i=0; $i<6; $i++) {
 <body>
 
   <div class="container" id=mainContainer>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center"> -->
       <table class="calendar_main">
           <tr>
             <td colspan="7" align="center">
@@ -109,7 +109,7 @@ for ($i=0; $i<6; $i++) {
         }
         ?>
       </table>
-    </div>
-  </div>
-</body>
-</html>
+    <!-- </div>
+  </div> -->
+<!-- </body>
+</html> -->
