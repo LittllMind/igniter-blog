@@ -31,13 +31,19 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// Consultations
+$routes->post('submit-jeune', 'FicheConsultation::submitJeune');
+$routes->get('consult-jeune', 'FicheConsultation::indexFormJeune');
 $routes->post('submit-generaliste', 'FicheConsultation::submitGeneraliste');
 $routes->get('consult-generaliste', 'FicheConsultation::indexFormGeneraliste');
+// Calendar
 $routes->get('calendar', 'Calendar::index');
 $routes->get('calendar/(:segment)/(:segment)', 'Calendar::changeMonth/$1/$2');
+// Login
 $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('logout', 'Login::logout');
 $routes->get('login', 'Home::login');
+//Members
 $routes->get('contact-form', 'Members::create');
 $routes->post('submit-form', 'Members::createMemberValidation');
 $routes->get('member/(:segment)', 'Members::MemberView/$1');

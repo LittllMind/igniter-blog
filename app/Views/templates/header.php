@@ -26,6 +26,7 @@
       <a class="nav-item nav-link active" href="/#">Acceuil<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="<?php echo base_url('/calendar')?>">Calendar</a>
       <a class="nav-item nav-link" href="<?php echo base_url('/consult-generaliste')?>">Consultation Généraliste</a>
+      <a class="nav-item nav-link" href="<?php echo base_url('/consult-jeune')?>">Consultation Jeunes</a>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" id="nav_right_elements">
