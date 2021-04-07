@@ -5,12 +5,12 @@ $validation = \Config\Services::validation(); ?>
 
   <h2>Conseil Départemental d'accès au droit de Vaucluse</h2>
   <br>
-  <h3>Permanence Jeunes / Enfants <br> Fiche de consultation</h3>
+  <h3>Permanence juridique gratuite d'avocat <br> Fiche de consultation</h3>
 </div>
 
 <div class="form-global">
 
-  <form class="" action="<?php echo base_url('/submit-jeune') ?>" method="post" id="submit-generaliste">
+  <form class="" action="<?php echo base_url('/submit-eco') ?>" method="post" id="submit-generaliste">
       <?= csrf_field() ?>
 
       <div class="form-group">
@@ -48,10 +48,9 @@ $validation = \Config\Services::validation(); ?>
       <div class="form-group">
         <label for="lieu_permanence">Lieu de la permanence</label>
         <select class="form-control" id="lieu_permanence" name="lieu_permanence">
-          <option>Avignon Tribunal - PJ</option>
-          <option>Avignon Mission Locale</option>
-          <option>Carpentas - PJ</option>
+          <option>Avignon - MJD - PJ</option>
           <option>Pertuis - PJ</option>
+          <option>Sorgues - EFS</option>
         </select>
       </div>
 
@@ -76,50 +75,55 @@ $validation = \Config\Services::validation(); ?>
       </div>
 
       <div class="form-group">
-        <label for="sexe">Sexe</label>
-        <select class="form-control" id="sexe" name="sexe">
-          <option>Masculin</option>
-          <option>Feminin</option>
-          <option>Non précisé</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="age">Âge</label>
-        <select class="form-control" id="ressources_mensuelles" name="age">
-          <option>- de 7 ans</option>
-          <option>7 - 10 ans</option>
-          <option>10 - 18 ans</option>
-          <option>18 - 25 ans</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="activite">Activité</label>
-        <select class="form-control" id="activite" name="activite">
-          <option>Non scolarisé</option>
-          <option>Scolarisé</option>
-          <option>Étudiant</option>
-          <option>Sans Emploi</option>
-          <option>Demandeur d'emploi</option>
-          <option>Célibataire avec enfant(s)</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label  for="activite_autre">Autre :</label>
+        <label for="commune_implentation">Commune d'implentation professionelle (actuelle ou future)</label>
         <input  type="text"
                 class="form-control"
-                id="activite_autre"
-                name="activite_autre"
+                id="commune_implentation"
+                name="commune_implentation"
                 placeholder=""
                 required="true">
-        <!-- Error -->
-        <?php if ($validation->getError('activite_autre')) {?>
-            <div class="alert alert-danger mt-2">
-                <?= $error = $validation->getError('activite_autre'); ?>
-            </div>
-        <?php }?>
+      </div>
+      <!-- Error -->
+      <?php if ($validation->getError('commune_implentation')) {?>
+        <div class="alert alert-danger mt-2">
+            <?= $error = $validation->getError('commune_implentation'); ?>
+        </div>
+      <?php }?>
+
+      <div class="form-group">
+        <label for="ressources_mensuelles">Ressources mensuelles (Moyenne)</label>
+        <input  type="number"
+                class="form-control"
+                id="ressources_mensuelles"
+                name="ressources_mensuelles"
+                placeholder=""
+                required="true">
+      </div>
+      <!-- Error -->
+      <?php if ($validation->getError('ressources_mensuelles')) {?>
+        <div class="alert alert-danger mt-2">
+            <?= $error = $validation->getError('ressources_mensuelles'); ?>
+        </div>
+      <?php }?>
+
+
+      <div class="form-group">
+        <label for="status_entrepreneur">Si entrepreuneur en exercice :</label>
+        <select class="form-control" id="status_entrepreneur" name="status_entrepreneur">
+          <option>Artisant</option>
+          <option>Commerçant</option>
+          <option>Agriculteur</option>
+          <option>Proffession libérales</option>
+          <option>Dirigeant Associatif</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="situation_entrepreneur">Si projet en création d'entreprise</label>
+        <select class="form-control" id="situation_entrepreneur" name="situation_entrepreneur">
+          <option>En activité</option>
+          <option>Demandeur d'emploi</option>
+        </select>
       </div>
 
 
@@ -130,31 +134,30 @@ $validation = \Config\Services::validation(); ?>
       <div class="form-group">
         <label for="orientation"></label>
         <select class="form-control" id="orientation" name="orientation">
-          <option>École</option>
-          <option>Parent</option>
-          <option>Institution</option>
+          <option>Juridiction</option>
+          <option>Service social</option>
+          <option>Mairie</option>
+          <option>Autre</option>
         </select>
       </div>
 
-      <div class="entete">
-        <h3>Domaine juridique sollicité</h3>
-      </div>
+
+    <div class="entete">
+      <h3>Domaine juridique sollicité</h3>
+    </div>
+
 
       <div class="form-group">
         <label for="domaine_juridique"></label>
         <select multiple class="form-control" id="domaine_juridique" name="domaine_juridique">
-          <option>Droit pénal / infraction</option>
-          <option>Assistance éducative</option>
-          <option>Droit immobilier / locatif</option>
-          <option>Consommation / contrats</option>
-          <option>Droit pénal / victime</option>
-          <option>Droit des étrangers</option>
-          <option>Droit du travail</option>
-          <option>Droit sécurité sociale</option>
-          <option>Droit de la famille</option>
+          <option>Droit des sociétés</option>
+          <option>Droit commercial</option>
+          <option>Démarches administrative</option>
+          <option>Fiscalité / cotisation</option>
+          <option>Droit social</option>
+          <option>Droit des assurances</option>
+          <option>Droit des contrats</option>
           <option>Responsabilité civile</option>
-          <option>Surendettement</option>
-          <!-- <option>Droit des tutelles</option> -->
         </select>
       </div>
 
@@ -177,13 +180,19 @@ $validation = \Config\Services::validation(); ?>
         <label for="nature_entretien"></label>
         <select multiple class="form-control" id="nature_entretien" name="nature_entretien">
           <option>Droit Information juridique</option>
-          <option>Orientation juridique vers avocat, notaire, huissier</option>
-          <option>Orientation juridique vers une association</option>
-          <option>Orientation juridique vers une juridiction compétente</option>
-          <option>Orientation juridique vers affaires familliales 388-1</option>
-          <option>Orientation juridique vers assistance éducative</option>
-          <option>Constitution dossier AJ</option>
-          <option>Autre orientation</option>
+          <option>Orientation juridique vers avocat</option>
+          <option>Orientation juridique vers notaire</option>
+          <option>Orientation juridique vers huissier</option>
+          <option>Orientation juridique vers expert-comptable</option>
+          <option>Orientation juridique vers une juridiction - TC</option>
+          <option>Orientation juridique vers une juridiction - TJ</option>
+          <option>Orientation juridique vers une juridiction - CPH</option>
+          <option>Orientation juridique vers une juridiction - Autre</option>
+          <option>Orientation juridique vers - CCI</option>
+          <option>Orientation juridique vers - Chambre des métiers</option>
+          <option>Orientation juridique vers - Pôle</option>
+          <option>Prevention du TC - cellule d'accompagnement du CIP</option>
+          <option>Prevention du TC - autre</option>
         </select>
       </div>
 

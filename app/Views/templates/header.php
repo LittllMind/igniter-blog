@@ -27,6 +27,7 @@
       <a class="nav-item nav-link" href="<?php echo base_url('/calendar')?>">Calendar</a>
       <a class="nav-item nav-link" href="<?php echo base_url('/consult-generaliste')?>">Consultation Généraliste</a>
       <a class="nav-item nav-link" href="<?php echo base_url('/consult-jeune')?>">Consultation Jeunes</a>
+      <a class="nav-item nav-link" href="<?php echo base_url('/consult-eco')?>">Consultation Economique</a>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" id="nav_right_elements">
