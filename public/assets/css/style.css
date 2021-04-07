@@ -18,6 +18,8 @@ body
     flex-direction: column;
 }
 
+/* Member */
+
 .memberView
 {
     flex-direction: column;
@@ -27,6 +29,8 @@ body
 {
     flex-direction: column;
 }
+
+/* Calendar */
 
 .calendar_main
 {
@@ -63,4 +67,42 @@ body
 #nav_right_elements
 {
     margin-left: auto;
+}
+
+/* Form Consultation */
+
+.entete
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+.radios
+{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5%;
+
+  @media(max-width: 640px)
+  {
+    flex-direction: column;
+  }
+}
+
+.radio
+{
+  margin-top: 3%;
+  margin-right: 5%;
+  margin-left: 5%;
+  input
+  {
+    position: absolute;
+    pointer-events: none;
+    visibility: hidden;
+
+  }
 }
