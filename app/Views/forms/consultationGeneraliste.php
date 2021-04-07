@@ -47,7 +47,7 @@ $validation = \Config\Services::validation(); ?>
 
       <div class="form-group">
         <label for="lieu_permanence">Lieu de la permanence</label>
-        <select multiple class="form-control" id="lieu_permanence">
+        <select multiple class="form-control" id="lieu_permanence" name="lieu_permanence">
           <option>Apt - PJ</option>
           <option>Avignon - MJD - PJ</option>
           <option>Avignon Tribunal - PJ</option>
@@ -71,11 +71,9 @@ $validation = \Config\Services::validation(); ?>
         </select>
       </div>
 
-    </form>
     <div class="entete">
       <h3>Situation personnelle du consultant</h3>
     </div>
-    <form class="" action="<?php echo base_url('/submit-generaliste') ?>" method="post" id="submit-generaliste">
 
       <div class="form-group">
           <label  for="commune_residence">Commune de résidence</label>
@@ -109,28 +107,19 @@ $validation = \Config\Services::validation(); ?>
         </div>
       <?php }?>
 
-      <label for="sexe">Sexe</label>
-      <div class="radios">
-        <div class="radio">
-          <input type="radio" id="feminin" name="sexe" checked>
-          <label for="feminin">
-            <div class="checker"></div>
-              Feminin
-          </label>
-        </div>
 
-        <div class="radio">
-          <input type="radio" id="masculin" name="sexe">
-          <label for="masculin">
-            <div class="checker"></div>
-              Masculin
-          </label>
-        </div>
+      <div class="form-group">
+        <label for="sexe">Sexe</label>
+        <select class="form-control" id="sexe" name="sexe">
+          <option>Masculin</option>
+          <option>Feminin</option>
+          <option>Autre</option>
+        </select>
       </div>
 
       <div class="form-group">
         <label for="ressources_mensuelles">Ressources Mensuelles (moyenne)</label>
-        <select class="form-control" id="ressources_mensuelles">
+        <select class="form-control" id="ressources_mensuelles" name="ressources_mensuelles">
           <option>- de 500 €</option>
           <option>- de 1000 €</option>
           <option>- de 1500 €</option>
@@ -140,7 +129,7 @@ $validation = \Config\Services::validation(); ?>
 
       <div class="form-group">
         <label for="situation_professionelle">Situation Professionnelle</label>
-        <select class="form-control" id="ressources_mensuelles">
+        <select class="form-control" id="ressources_mensuelles" name="situation_professionelle">
           <option>Étudiant</option>
           <option>Retraité</option>
           <option>Sans emploi</option>
@@ -150,22 +139,20 @@ $validation = \Config\Services::validation(); ?>
 
       <div class="form-group">
         <label for="situation_foyer">Situation du foyer</label>
-        <select class="form-control" id="situation_foyer">
+        <select class="form-control" id="situation_foyer" name="situation_foyer">
           <option>Personne seule</option>
           <option>Personne seule avec enfants</option>
           <option>En couple (marié, pacsé, concubinage)</option>
         </select>
       </div>
-    </form>
 
     <div class="entete">
       <h3>Prise de contact / orientation par :</h3>
     </div>
-    <form class="" action="<?php echo base_url('/submit-generaliste') ?>" method="post" id="submit-generaliste">
 
       <div class="form-group">
         <label for="orientation"></label>
-        <select class="form-control" id="orientation">
+        <select class="form-control" id="orientation" name="orientation">
           <option>Juridiction</option>
           <option>Service social</option>
           <option>Mairie</option>
@@ -173,17 +160,15 @@ $validation = \Config\Services::validation(); ?>
         </select>
       </div>
 
-    </form>
 
     <div class="entete">
       <h3>Domaine juridique sollicité</h3>
     </div>
 
-    <form class="" action="<?php echo base_url('/submit-generaliste') ?>" method="post" id="submit-generaliste">
 
       <div class="form-group">
         <label for="domaine_juridique"></label>
-        <select multiple class="form-control" id="domaine_juridique">
+        <select multiple class="form-control" id="domaine_juridique" name="domaine_juridique">
           <option>Droit administratif</option>
           <option>Droit des étrangers</option>
           <option>Droit des successions</option>
@@ -199,25 +184,23 @@ $validation = \Config\Services::validation(); ?>
       </div>
 
       <div class="form-group">
-        <label for="domaine_juridique">Autres (commercial / rural)</label>
+        <label for="domaine_juridique_autre">Autres (commercial / rural)</label>
         <input  type="text"
                 class="form-control"
-                id="domaine_juridique"
-                name="domaine_juridique"
+                id="domaine_juridique_autre"
+                name="domaine_juridique_autre"
                 placeholder="">
       </div>
 
-    </form>
 
     <div class="entete">
       <h3>Nature de l'entretien :</h3>
     </div>
 
-    <form class="" action="<?php echo base_url('/submit-generaliste') ?>" method="post" id="submit-generaliste">
 
       <div class="form-group">
         <label for="nature_entretien"></label>
-        <select multiple class="form-control" id="nature_entretien">
+        <select multiple class="form-control" id="nature_entretien" name="nature_entretien">
           <option>Droit Information juridique</option>
           <option>Orientation juridique vers avocat, notaire, huissier</option>
           <option>Orientation juridique vers une association</option>
@@ -227,7 +210,7 @@ $validation = \Config\Services::validation(); ?>
       </div>
 
       <div class="form-group">
-        <label for="précision">Précisions</label>
+        <label for="precision">Précisions</label>
         <input  type="text"
                 class="form-control"
                 id="precision"

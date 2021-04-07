@@ -71,6 +71,11 @@ body
 
 /* Form Consultation */
 
+#sexe
+{
+    margin: 3%;
+}
+
 .entete
 {
     margin-top: 5%;
