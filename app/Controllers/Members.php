@@ -123,6 +123,11 @@ class Members extends Controller
     {
         $model = new MembersModel();
 
+        // $data [
+        //   'member' => $model->getMembers($userId),
+        //   'title' => $data['member']['pseudo'];
+        // ];
+
         $data['member'] = $model->getMembers($userId);
 
         if (empty($data['member'])) {

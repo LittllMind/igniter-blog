@@ -31,6 +31,9 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// Consultation Listes
+$routes->get('fiche-list/(:segment)', 'FicheConsultation::FicheConsultationView/$1');
+$routes->get('fiche-list', 'FicheConsultation::index');
 // Consultations
 $routes->post('submit-eco', 'FicheConsultation::submitEconomique');
 $routes->get('consult-eco', 'FicheConsultation::indexFormEconomique');

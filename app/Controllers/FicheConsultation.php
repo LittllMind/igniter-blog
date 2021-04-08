@@ -9,6 +9,38 @@ use CodeIgniter\HTTP\IncomingRequest;
 
 class FicheConsultation extends Controller
 {
+    public function index()
+    {
+        $model = new ConsultationModel();
+
+        $data = [
+          'fichesConsultations' => $model->getFichesConsultations(),
+          'title' => 'Consultation liste'
+        ];
+
+        echo view('templates/header', $data);
+        echo view('consultation/ficheConsultOverview', $data);
+        echo view('templates/footer');
+    }
+
+    public function FicheConsultationView($ficheConsultId = null)
+    {
+        $model = new ConsultationModel();
+
+        $data['ficheConsultation'] = $model->getFichesConsultations($ficheConsultId);
+
+        // if (empty($data['ficheConsultation'])) {
+        //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the ' . $ficheConsultId);
+        // }
+
+        $data['title'] = $data['ficheConsultation']['id'];
+
+        echo view('templates/header', $data);
+        echo view('consultation/ficheConsultView', $data);
+        echo view('templates/footer');
+    }
+
+
     public function indexFormGeneraliste()
     {
         $data =[

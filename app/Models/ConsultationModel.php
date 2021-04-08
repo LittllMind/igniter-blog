@@ -29,4 +29,14 @@ class ConsultationModel extends Model
       'nature_entretien',
       'precisions_nature_entretien'
     ];
+
+    public function getFichesConsultations($id = false)
+    {
+        if ($id === false) {
+            return $this->findAll();
+        }
+        return $this->asArray()
+                    ->where(['id' => $id])
+                    ->first();
+    }
 }
