@@ -158,6 +158,7 @@ $validation = \Config\Services::validation(); ?>
           <option>Droit des assurances</option>
           <option>Droit des contrats</option>
           <option>Responsabilité civile</option>
+          <option>Autre</option>
         </select>
       </div>
 

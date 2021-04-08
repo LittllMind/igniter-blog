@@ -97,16 +97,8 @@ $validation = \Config\Services::validation(); ?>
                 class="form-control"
                 id="quartier_politique"
                 name="quartier_politique"
-                placeholder=""
-                required="true">
+                placeholder="">
       </div>
-      <!-- Error -->
-      <?php if ($validation->getError('quartier_politique')) {?>
-        <div class="alert alert-danger mt-2">
-            <?= $error = $validation->getError('quartier_politique'); ?>
-        </div>
-      <?php }?>
-
 
       <div class="form-group">
         <label for="sexe">Sexe</label>
@@ -128,8 +120,8 @@ $validation = \Config\Services::validation(); ?>
       </div>
 
       <div class="form-group">
-        <label for="situation_professionelle">Situation Professionnelle</label>
-        <select class="form-control" id="ressources_mensuelles" name="situation_professionelle">
+        <label for="activite">Situation Professionnelle</label>
+        <select class="form-control" id="activite" name="activite">
           <option>Étudiant</option>
           <option>Retraité</option>
           <option>Sans emploi</option>
@@ -180,6 +172,7 @@ $validation = \Config\Services::validation(); ?>
           <option>Droit sécurité sociale (maladie, vieillesse, travail, famille)</option>
           <option>Responsabilité civile</option>
           <option>Surendettement / crédit / consommation / contrats</option>
+          <option>Autre</option>
         </select>
       </div>
 

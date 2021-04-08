@@ -103,6 +103,7 @@ $validation = \Config\Services::validation(); ?>
           <option>Sans Emploi</option>
           <option>Demandeur d'emploi</option>
           <option>Célibataire avec enfant(s)</option>
+          <option>Autre</option>
         </select>
       </div>
 
@@ -154,6 +155,7 @@ $validation = \Config\Services::validation(); ?>
           <option>Droit de la famille</option>
           <option>Responsabilité civile</option>
           <option>Surendettement</option>
+          <option>Autre</option>
           <!-- <option>Droit des tutelles</option> -->
         </select>
       </div>

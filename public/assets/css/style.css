@@ -1,3 +1,5 @@
+
+
 /* SCSS RGB */
 /* $lapis-lazuli: rgba(51, 102, 153, 1);
 $dark-sky-blue: rgba(134, 187, 216, 1);
@@ -5,11 +7,14 @@ $charcoal: rgba(47, 72, 88, 1);
 $granny-smith-apple: rgba(158, 228, 147, 1);
 $nyanza: rgba(218, 247, 220, 1); */
 
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
 body
 {
     text-align: center;
     align-items: center;
-}
+} */
 
 #mainContainer
 {
@@ -18,6 +23,44 @@ body
     flex-direction: column;
 }
 
+/* Side-bar */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
 /* Member */
 
 .memberView

@@ -78,4 +78,18 @@ class Validation
         ]
       ]
     ];
+
+    public $ficheConsultation = [
+      'nom_intervenant' => 'required',
+      'date_permanence' => 'required',
+      'lieu_permanence' => 'required',
+      'commune_residence' => 'required',
+      'sexe' => 'required',
+      'ressources_mensuelles' => 'required',
+      'activite' => 'required',
+      'situation_foyer' => 'required',
+      'orientation' => 'required',
+      'domaine_juridique' => 'required',
+      'nature_entretien' => 'required',
+    ];
 }
