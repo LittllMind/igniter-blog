@@ -1,36 +1,62 @@
 
-<div class="memberView">
-
+<div class="fichesConsultView">
   <?php if (! empty($fichesConsultations) && is_array($fichesConsultations)) : ?>
-      <?php foreach ($fichesConsultations as $fichesConsultation) : ?>
-          <h3><?= esc($fichesConsultation['id']) ?></h3>
+  <table class="table">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Id intervenant</th>
+      <th scope="col">Nom intervenant</th>
+      <th scope="col">Date</th>
+      <th scope="col">Lieu</th>
+      <th scope="col">Id ayant droit</th>
+      <th scope="col">Quartier oplitique</th>
+      <th scope="col">Commune residence</th>
+      <th scope="col">Sexe</th>
+      <th scope="col">Implentation entreprise</th>
+      <th scope="col">Status entrepreneur</th>
+      <th scope="col">Situation entrepreneur</th>
+      <th scope="col">Ressources mensuelles</th>
+      <th scope="col">Activitée</th>
+      <th scope="col">Situation du foyer</th>
+      <th scope="col">Orientation</th>
+      <th scope="col">Domaine juridique</th>
+      <th scope="col">Nature de l'entratien</th>
+      <th scope="col">Precisions</th>
+      <th scope="col">#</th>
+    </tr>
 
-          <h3><?= esc($fichesConsultation['id_ayant_droit']) ?></h3>
-          <h3><?= esc($fichesConsultation['id_intervenant']) ?></h3>
-          <h3><?= esc($fichesConsultation['nom_intervenant']) ?></h3>
-          <h3><?= esc($fichesConsultation['date_permanence']) ?></h3>
-          <h3><?= esc($fichesConsultation['lieu_permanence']) ?></h3>
-          <h3><?= esc($fichesConsultation['commune_residence']) ?></h3>
-          <h3><?= esc($fichesConsultation['commun_implentation_entreprise']) ?></h3>
-          <h3><?= esc($fichesConsultation['quartier_politique']) ?></h3>
-          <h3><?= esc($fichesConsultation['sexe']) ?></h3>
-          <h3><?= esc($fichesConsultation['status_entrepreneur']) ?></h3>
-          <h3><?= esc($fichesConsultation['situation_entrepreneur']) ?></h3>
-          <h3><?= esc($fichesConsultation['ressources_mensuelles']) ?></h3>
-          <h3><?= esc($fichesConsultation['activite']) ?></h3>
-          <h3><?= esc($fichesConsultation['situation_foyer']) ?></h3>
-          <h3><?= esc($fichesConsultation['orientation']) ?></h3>
-          <h3><?= esc($fichesConsultation['domaine_juridique']) ?></h3>
-          <h3><?= esc($fichesConsultation['nature_entretien']) ?></h3>
-          <h3><?= esc($fichesConsultation['precision_nature_entretien']) ?></h3>
+    <?php foreach ($fichesConsultations as $fichesConsultation) : ?>
+      <tr>
+        <th scope="row"><?= esc($fichesConsultation['id']) ?></th>
+        <td><?= esc($fichesConsultation['id_intervenant']) ?></td>
+        <td><?= esc($fichesConsultation['nom_intervenant']) ?></td>
+        <td><?= esc($fichesConsultation['date_permanence']) ?></td>
+        <td><?= esc($fichesConsultation['lieu_permanence']) ?></td>
+        <td><?= esc($fichesConsultation['id_ayant_droit']) ?></td>
+        <td><?= esc($fichesConsultation['quartier_politique']) ?></td>
+        <td><?= esc($fichesConsultation['commune_residence']) ?></td>
+        <td><?= esc($fichesConsultation['sexe']) ?></td>
+        <td><?= esc($fichesConsultation['commun_implentation_entreprise']) ?></td>
+        <td><?= esc($fichesConsultation['status_entrepreneur']) ?></td>
+        <td><?= esc($fichesConsultation['situation_entrepreneur']) ?></td>
+        <td><?= esc($fichesConsultation['ressources_mensuelles']) ?></td>
+        <td><?= esc($fichesConsultation['activite']) ?></td>
+        <td><?= esc($fichesConsultation['situation_foyer']) ?></td>
+        <td><?= esc($fichesConsultation['orientation']) ?></td>
+        <td><?= esc($fichesConsultation['domaine_juridique']) ?></td>
+        <td><?= esc($fichesConsultation['nature_entretien']) ?></td>
+        <td><?= esc($fichesConsultation['precision_nature_entretien']) ?></td>
+        <td><a href="/fiche-list/<?= esc($fichesConsultation['id'], 'url') ?>">Details</a></td>
+      </tr>
+    <?php endforeach; ?>
 
-          <p> <a href="/fiche-list/<?= esc($fichesConsultation['id'], 'url') ?>">View member </a> </p>
-
-      <?php endforeach; ?>
+  </table>
   <?php else : ?>
-        <h3>No Member</h3>
-        <br><br>
-        <h4>Unable to find any member</h4>
+      <h3>Aucune Fiche de consultation</h3>
+      <br><br>
   <?php endif ?>
+
+
+
 
 </div>

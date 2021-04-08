@@ -113,7 +113,7 @@ $validation = \Config\Services::validation(); ?>
           <option>Artisant</option>
           <option>Commerçant</option>
           <option>Agriculteur</option>
-          <option>Proffession libérales</option>
+          <option>Profession libérales</option>
           <option>Dirigeant Associatif</option>
         </select>
       </div>

@@ -295,8 +295,6 @@ class FicheConsultation extends Controller
             $consultationModel->save($data);
             echo view('templates/header', ['title' => 'Formulaire enregistré']);
             echo view('member/success');
-
-            echo view('templates/header', $data);
             echo $this->request->getPost('nom_intervenant');
             echo '<br>---------------------------<br>';
             echo $this->request->getPost('date_permanence');
